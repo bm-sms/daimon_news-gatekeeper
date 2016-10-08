@@ -1,4 +1,5 @@
 require 'daimon_news/gatekeeper/version'
+require 'daimon_news/gatekeeper/engine'
 require 'sprockets/es6'
 require 'jquery-rails'
 require 'rails-assets-css-spinners'
