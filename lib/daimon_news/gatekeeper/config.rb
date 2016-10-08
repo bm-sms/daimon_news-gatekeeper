@@ -22,8 +22,8 @@ module DaimonNews
 
     configure do |config|
       config.member_only_keyword = '(members only)'
-      config.sign_in_status_url = 'https://example.com/'
-      config.sign_in_url = nil
+      config.sign_in_status_url = ''
+      config.sign_in_url = ''
       config.parameter_name_to_return = 'return_to'
       config.loading_message = 'Now Loading..'
     end
