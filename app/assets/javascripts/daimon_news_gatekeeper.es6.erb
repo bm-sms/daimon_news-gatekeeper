@@ -1,22 +1,27 @@
 jQuery(($) => {
+
+  <% config = DaimonNews::Gatekeeper.config %>
+
+  const SIGN_IN_URL = '<%= DaimonNews::Gatekeeper.config.sign_in_url %>'
+  const LOGIN_STATUS_URL = '<%= DaimonNews::Gatekeeper.config.sign_in_status_url %>'
+
+  const displayPostBody = () => {
+    $('.spinner-loader-container').css('display', 'none')
+    $('article.post').css('display', 'block')
+  }
+
   $('article.post').after('<div class="spinner-loader-container"><div class="spinner-loader"> 読み込み中…</div><div class="spinner-loader-text">読み込み中…</div></div>')
-});
 
-const displayPostBody = () => {
-  $('.spinner-loader-container').css('display', 'none')
-  $('article.post').css('display', 'block')
-}
-
-jQuery(($) => {
-  const SIGN_IN_URL = '<%= DaimonNews::Gatekeeper.config.sign_in_url %>';
-  const LOGIN_STATUS_URL = '<%= DaimonNews::Gatekeeper.config.sign_in_status_url %>';
+  if(SIGN_IN_URL == '' || LOGIN_STATUS_URL == '') {
+    return
+  }
 
   if ($('article.post').length == 0) {
-    return;
+    return
   }
 
   if ($('#preview-notification').length >= 1) {
-    return;
+    return
   }
 
   $.ajax({
@@ -28,17 +33,17 @@ jQuery(($) => {
   }).then((isSignedIn) => {
     if (isSignedIn) {
       displayPostBody()
-      return;
+      return
     }
 
     let isUSerOnly = $('.post__body').html().match(/<%= DaimonNews::Gatekeeper.config.member_only_keyword %>/) != null
 
     if (isUSerOnly) {
       let current_path = window.location.href
-      location.href = `${SIGN_IN_URL}?return_to=${current_path}`;
+      location.href = `${SIGN_IN_URL}?<%= DaimonNews::Gatekeeper.config.parameter_name_to_return %>=${current_path}`
     } else {
       displayPostBody()
     }
-  });
+  })
 
-});
+})
