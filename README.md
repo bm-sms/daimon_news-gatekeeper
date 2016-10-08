@@ -1,10 +1,10 @@
 **CAUTION: This gem is still under development.**
 
 # DaimonNews::Gatekeeper
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/daimon_news/gatekeeper`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+- daimon_news-gatekeeper is a plugin gem to be able to create member only articles in [daimon news](https://github.com/bm-sms/daimon-news).
+- This plugin is depend on [daimon news](https://github.com/bm-sms/daimon-news) and [daimon_news-layout](https://github.com/bm-sms/daimon_news-layout)
+- To enable this gem, the server-side implementation to authenticate user ( e.g. [devise](https://github.com/plataformatec/devise)) is required.
+    - To know the details, see the usage section of this document.
 
 ## Installation
 
@@ -24,7 +24,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Now writing..
 
 ## Development
 
