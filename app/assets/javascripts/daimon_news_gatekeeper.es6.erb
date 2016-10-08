@@ -2,15 +2,15 @@ jQuery(($) => {
 
   <% config = DaimonNews::Gatekeeper.config %>
 
-  const SIGN_IN_URL = '<%= DaimonNews::Gatekeeper.config.sign_in_url %>'
-  const LOGIN_STATUS_URL = '<%= DaimonNews::Gatekeeper.config.sign_in_status_url %>'
+  const SIGN_IN_URL = '<%= config.sign_in_url %>'
+  const LOGIN_STATUS_URL = '<%= config.sign_in_status_url %>'
 
   const displayPostBody = () => {
     $('.spinner-loader-container').css('display', 'none')
     $('article.post').css('display', 'block')
   }
 
-  $('article.post').after('<div class="spinner-loader-container"><div class="spinner-loader"> 読み込み中…</div><div class="spinner-loader-text">読み込み中…</div></div>')
+  $('article.post').after('<div class="spinner-loader-container"><div class="spinner-loader"><%= config.loading_message %></div><div class="spinner-loader-text"><%= config.loading_message %></div></div>')
 
   if(SIGN_IN_URL == '' || LOGIN_STATUS_URL == '') {
     return
@@ -36,11 +36,11 @@ jQuery(($) => {
       return
     }
 
-    let isUSerOnly = $('.post__body').html().match(/<%= DaimonNews::Gatekeeper.config.member_only_keyword %>/) != null
+    let isUSerOnly = $('.post__body').html().match(/<%= config.member_only_keyword %>/) != null
 
     if (isUSerOnly) {
       let current_path = window.location.href
-      location.href = `${SIGN_IN_URL}?<%= DaimonNews::Gatekeeper.config.parameter_name_to_return %>=${current_path}`
+      location.href = `${SIGN_IN_URL}?<%= config.parameter_name_to_return %>=${current_path}`
     } else {
       displayPostBody()
     }
