@@ -1,0 +1,50 @@
+jQuery(($) => {
+  const body = `
+    <div class="spinner-loader-container">
+        <div class="spinner-loader"> 読み込み中…</div>
+        <div class="spinner-loader-text">読み込み中…</div>
+    </div>
+  `
+  $('article.post').after(body)
+});
+
+const displayPostBody = () => {
+  $('.spinner-loader-container').css('display', 'none')
+  $('article.post').css('display', 'block')
+}
+
+jQuery(($) => {
+  const SIGN_IN_URL = '<%= "//#{DaimonNews::Gatekeeper.config.sign_in_url}/users/sign_in" %>';
+  const LOGIN_STATUS_URL = '<%= "//#{DaimonNews::Gatekeeper.config.sign_in_status_url}/login_status" %>';
+
+  if ($('article.post').length == 0) {
+    return;
+  }
+
+  if ($('#preview-notification').length >= 1) {
+    return;
+  }
+
+  $.ajax({
+    type: 'GET',
+    url: LOGIN_STATUS_URL,
+    xhrFields: {
+      withCredentials: true
+    }
+  }).then((isSignedIn) => {
+    if (isSignedIn) {
+      displayPostBody()
+      return;
+    }
+
+    let isUSerOnly = $('.post__body').html().match(/#{ DaimonNews::Gatekeeper.config.member_only_keyword }/) != null
+
+    if (isUSerOnly) {
+      let current_path = window.location.href
+      location.href = `${SIGN_IN_URL}?return_to=${current_path}`;
+    } else {
+      displayPostBody()
+    }
+  });
+
+});

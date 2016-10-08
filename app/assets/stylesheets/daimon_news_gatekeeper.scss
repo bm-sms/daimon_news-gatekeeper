@@ -1,0 +1,18 @@
+@import "css-spinners";
+
+article.post {
+  display: none;
+}
+
+.spinner-loader-container {
+  padding: 20% 0;
+  text-align: center;
+}
+
+.spinner-loader {
+  display: inline-block;
+}
+
+.spinner-loader-text {
+  display: block;
+}
