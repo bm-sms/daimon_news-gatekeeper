@@ -18,6 +18,7 @@ module DaimonNews
       config_accessor :member_only_keyword
       config_accessor :parameter_name_to_return
       config_accessor :loading_message
+      config_accessor :indicator_type
     end
 
     configure do |config|
@@ -26,6 +27,7 @@ module DaimonNews
       config.sign_in_url = ''
       config.parameter_name_to_return = 'return_to'
       config.loading_message = 'Now Loading..'
+      config.indicator_type = 'spinner-loader'
     end
 
   end

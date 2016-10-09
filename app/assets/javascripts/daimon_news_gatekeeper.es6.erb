@@ -6,11 +6,16 @@ jQuery(($) => {
   const LOGIN_STATUS_URL = '<%= config.sign_in_status_url %>'
 
   const displayPostBody = () => {
-    $('.spinner-loader-container').css('display', 'none')
+    $('.loading-indicator-container').css('display', 'none')
     $('article.post').css('display', 'block')
   }
 
-  $('article.post').after('<div class="spinner-loader-container"><div class="spinner-loader"><%= config.loading_message %></div><div class="spinner-loader-text"><%= config.loading_message %></div></div>')
+  const loadingHtml = '<div class="loading-indicator-container">'
+                        + '<div class="<%= config.indicator_type %> loading-indicator"><%= config.loading_message %></div>'
+                        + '<div class="loading-indicator-text"><%= config.loading_message %></div>'
+                    + '</div>'
+
+  $('article.post').after(loadingHtml)
 
   if(SIGN_IN_URL == '' || LOGIN_STATUS_URL == '') {
     return
