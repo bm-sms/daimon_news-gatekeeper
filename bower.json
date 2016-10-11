@@ -1,0 +1,21 @@
+{
+  "name": "daimon_news-gatekeeper",
+  "authors": [
+    "daimon developers"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "https://github.com/bm-sms/daimon_news-gatekeeper",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "css-spinners": "~2.2.0"
+  }
+}
