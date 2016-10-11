@@ -2,6 +2,12 @@
 
 jQuery(function($) {
 
+  var postElement = $('article.post');
+
+  if (postElement.length === 0) {
+    return;
+  }
+
   var config = daimonNewsGatekeeperConfig;
 
   var signInUrl = config.sign_in_url;
@@ -16,14 +22,10 @@ jQuery(function($) {
                         + '<div class="' + config.indicator_type + ' loading-indicator">' + config.loading_message + '</div>'
                         + '<div class="loading-indicator-text">' + config.loading_message + '</div>'
                     + '</div>';
-  var postElement = $('article.post');
   postElement.after(loadingHtml);
 
-  if(signInUrl === '' || signInStatusUrl === '') {
-    return;
-  }
-
-  if (postElement.length === 0) {
+  if(!signInUrl || !signInStatusUrl) {
+    displayPostBody();
     return;
   }
 
