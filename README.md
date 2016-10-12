@@ -1,6 +1,6 @@
 # DaimonNews::Gatekeeper
-- daimon_news-gatekeeper is a plugin gem to enable to create member only articles in [daimon news](https://github.com/bm-sms/daimon-news).
-- This plugin is depend on [daimon news](https://github.com/bm-sms/daimon-news) and [daimon_news-layout](https://github.com/bm-sms/daimon_news-layout)
+- daimon_news-gatekeeper is a plugin gem to enable to create members-only articles in [daimon news](https://github.com/bm-sms/daimon-news).
+- This plugin depends on [daimon news](https://github.com/bm-sms/daimon-news) and [daimon_news-layout](https://github.com/bm-sms/daimon_news-layout)
 - To enable this gem, the server-side implementation to authenticate user ( e.g. [devise](https://github.com/plataformatec/devise)) is required.
     - To know the details, see the usage section of this document.
 
